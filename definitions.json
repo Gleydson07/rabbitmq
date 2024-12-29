@@ -34,7 +34,7 @@
       "name": "/"
     },
     {
-      "name": "/vhost_auth",
+      "name": "vh_auth",
       "default_queue_type": "classic"
     }
   ],
@@ -48,21 +48,21 @@
     },
     {
       "user": "master",
-      "vhost": "/vhost_auth",
+      "vhost": "vh_auth",
       "configure": ".*",
       "write": ".*",
       "read": ".*"
     },
     {
       "user": "auth_user_publisher",
-      "vhost": "/vhost_auth",
+      "vhost": "vh_auth",
       "configure": ".*",
       "write": ".*",
       "read": ".*"
     },
     {
       "user": "auth_user_consumer",
-      "vhost": "/vhost_auth",
+      "vhost": "vh_auth",
       "configure": "",
       "write": "",
       "read": ".*"
