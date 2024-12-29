@@ -1,0 +1,78 @@
+{
+  "rabbit_version": "4.0.5",
+	"rabbitmq_version": "4.0.5",
+	"product_name": "RabbitMQ",
+	"product_version": "4.0.5",
+	"rabbitmq_definition_format": "cluster",
+	"original_cluster_name": "rabbit@fa24547547e0",
+	"explanation": "Definitions of cluster 'rabbit@fa24547547e0'",
+  "users": [
+    {
+      "name": "master",
+			"password_hash": "ZAazOsJTM1Lf0YcIX1c5S4sDJqws77BNMTyZrxSr9r7RujBJ",
+			"hashing_algorithm": "rabbit_password_hashing_sha256",
+			"tags": ["administrator"],
+			"limits": {}
+    },
+    {
+      "name": "auth_user_publisher",
+      "password_hash": "i1IKwQ3IWFw7l1BGZw+L84Svf5uPGxMNwkZD3Gm6ECeS3VG1",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": ["management"],
+			"limits": {}
+    },
+    {
+      "name": "auth_user_consumer",
+      "password_hash": "rk3OmTLOz4ttr+5Hdp2zkCweh6244GK9iNDvdap02kji8vTt",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": ["management"],
+			"limits": {}
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    },
+    {
+      "name": "/vhost_auth",
+      "default_queue_type": "classic"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "master",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "master",
+      "vhost": "/vhost_auth",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "auth_user_publisher",
+      "vhost": "/vhost_auth",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "auth_user_consumer",
+      "vhost": "/vhost_auth",
+      "configure": "",
+      "write": "",
+      "read": ".*"
+    }
+  ],
+  "exchanges": [],
+  "queues": [],
+  "bindings": [],
+  "topic_permissions": [],
+	"parameters": [],
+  "policies": []
+}
+

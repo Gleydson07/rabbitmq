@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  rabbitmq:
+    build:
+      context: . # Usa o Dockerfile no diretório atual
+    container_name: rabbitmq
+    ports:
+      - "${RABBITMQ_AMQP_PORT}:5672"   # Porta para comunicação AMQP
+      - "${RABBITMQ_MANAG_PORT}:15672" # Porta para a interface de gerenciamento
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
+      # Comment - Plugins
+      # RABBITMQ_PLUGINS: rabbitmq_management,rabbitmq_mqtt,rabbitmq_prometheus
+      # RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: "-rabbit definitions_file '/etc/rabbitmq/definitions.json'"
+      # Comment - Limita recursos
+      # RABBITMQ_VM_MEMORY_HIGH_WATERMARK: 0.4    # Define a porcentagem da memória total que o RabbitMQ pode usar antes de iniciar ações de limite
+      # RABBITMQ_DISK_FREE_LIMIT: 100MB           # Define o limite mínimo de espaço em disco disponível (em MB ou %)
+      # RABBITMQ_HEARTBEAT: 30                    # Define o tempo limite (em segundos) entre os sinais de heartbeat do cliente.
+
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq # Persistência dos dados
+      # - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf # Arquivo de configuração
+      # - ./definitions.json:/etc/rabbitmq/definitions.json # Arquivo de definições
+    restart: always
+
+volumes:
+  rabbitmq_data:

@@ -1,0 +1,17 @@
+{
+  "name": "rabbitmq",
+  "version": "1.0.0",
+  "main": "genHash.js",
+  "scripts": {
+    "start": "node genHash.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "base64-js": "^1.5.1",
+    "crypto": "^1.0.1"
+  }
+}
