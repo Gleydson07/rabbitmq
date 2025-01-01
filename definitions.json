@@ -15,15 +15,15 @@
 			"limits": {}
     },
     {
-      "name": "auth_user_publisher",
-      "password_hash": "i1IKwQ3IWFw7l1BGZw+L84Svf5uPGxMNwkZD3Gm6ECeS3VG1",
+      "name": "user_auth_pub",
+      "password_hash": "aZexL4Bzm0CmdUOV42BZHzwqCYxilod27SX8MuL1TOdBgWje",
       "hashing_algorithm": "rabbit_password_hashing_sha256",
       "tags": ["management"],
 			"limits": {}
     },
     {
-      "name": "auth_user_consumer",
-      "password_hash": "rk3OmTLOz4ttr+5Hdp2zkCweh6244GK9iNDvdap02kji8vTt",
+      "name": "user_auth_con",
+      "password_hash": "L7Yim/GEMRThY4p1zQFMeaDvicZ7rqDdfrLYtQx5vAWr4ly4",
       "hashing_algorithm": "rabbit_password_hashing_sha256",
       "tags": ["management"],
 			"limits": {}
@@ -34,7 +34,7 @@
       "name": "/"
     },
     {
-      "name": "vh_auth",
+      "name": "vh_business",
       "default_queue_type": "classic"
     }
   ],
@@ -48,23 +48,23 @@
     },
     {
       "user": "master",
-      "vhost": "vh_auth",
+      "vhost": "vh_business",
       "configure": ".*",
       "write": ".*",
       "read": ".*"
     },
     {
-      "user": "auth_user_publisher",
-      "vhost": "vh_auth",
+      "user": "user_auth_pub",
+      "vhost": "vh_business",
       "configure": ".*",
       "write": ".*",
       "read": ".*"
     },
     {
-      "user": "auth_user_consumer",
-      "vhost": "vh_auth",
-      "configure": "",
-      "write": "",
+      "user": "user_auth_con",
+      "vhost": "vh_business",
+      "configure": ".*",
+      "write": ".*",
       "read": ".*"
     }
   ],

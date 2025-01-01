@@ -14,7 +14,7 @@ function rabbitmqPasswordHash(password) {
 }
 
 // Exemplo de uso
-const password = 'auth_user_consumer_pass';
+const password = 'con_pass';
 const hashedPassword = rabbitmqPasswordHash(password);
 
 console.log('Hashed password:', hashedPassword);
