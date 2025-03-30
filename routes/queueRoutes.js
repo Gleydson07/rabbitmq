@@ -42,6 +42,7 @@ router.post("/:queue/purge", async (req, res) => {
 router.post("/:queue/bind", async (req, res) => {
   const { queue } = req.params;
   const { source, pattern, args } = req.body;
+
   try {
     const result = await rabbitMQ.channel.bindQueue(
       queue,
@@ -68,12 +69,20 @@ router.post("/:queue/unbind", async (req, res) => {
       pattern,
       args
     );
-    res
-      .status(200)
-      .json({
-        message: `Fila ${queue} desassociada da exchange ${source}`,
-        result,
-      });
+    res.status(200).json({
+      message: `Fila ${queue} desassociada da exchange ${source}`,
+      result,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Lista todas as filas
+router.get("/", async (req, res) => {
+  try {
+    const queues = await rabbitMQ.channel.checkQueue();
+    res.status(200).json({ queues });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

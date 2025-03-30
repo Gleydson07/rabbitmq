@@ -3,7 +3,6 @@ import { connectRabbitMQ } from "./rabbitmq.js";
 import queueRoutes from "./routes/queueRoutes.js";
 import exchangeRoutes from "./routes/exchangeRoutes.js";
 import messageRoutes from "./routes/messageRoutes.js";
-import ackRoutes from "./routes/ackRoutes.js";
 import definitionsRoutes from "./routes/definitionsRoutes.js";
 import * as dotenv from "dotenv";
 import * as dotenvExpand from "dotenv-expand";
@@ -20,7 +19,6 @@ async function start() {
   app.use("/exchanges", exchangeRoutes);
   app.use("/queues", queueRoutes);
   app.use("/messages", messageRoutes);
-  app.use("/ack", ackRoutes);
   app.use("/definitions", definitionsRoutes);
 
   const PORT = process.env.APP_PORT || 4000;
