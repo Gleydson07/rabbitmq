@@ -1,9 +1,11 @@
 {
   "name": "rabbitmq",
   "version": "1.0.0",
+  "type": "module",
   "main": "genHash.js",
   "scripts": {
-    "start": "node genHash.js",
+    "start": "node index.js",
+    "gen:hash": "node genHash.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,7 +13,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "amqplib": "^0.10.7",
     "base64-js": "^1.5.1",
-    "crypto": "^1.0.1"
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.7",
+    "dotenv-expand": "^12.0.1",
+    "express": "^4.21.2"
   }
 }
