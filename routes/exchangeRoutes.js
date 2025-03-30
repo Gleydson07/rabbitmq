@@ -42,12 +42,10 @@ router.post("/:destination/bind", async (req, res) => {
       pattern,
       args
     );
-    res
-      .status(200)
-      .json({
-        message: `Exchange ${destination} ligada à exchange ${source}`,
-        result,
-      });
+    res.status(200).json({
+      message: `Exchange ${destination} ligada à exchange ${source}`,
+      result,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -64,12 +62,19 @@ router.post("/:destination/unbind", async (req, res) => {
       pattern,
       args
     );
-    res
-      .status(200)
-      .json({
-        message: `Exchange ${destination} desassociada da exchange ${source}`,
-        result,
-      });
+    res.status(200).json({
+      message: `Exchange ${destination} desassociada da exchange ${source}`,
+      result,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const exchanges = await rabbitMQ.channel.checkExchange();
+    res.status(200).json({ exchanges });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
